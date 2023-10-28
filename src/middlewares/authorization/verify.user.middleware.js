@@ -1,5 +1,6 @@
 const crypto = require('crypto');
-import { db } from '../../utils/db.server';
+// import { db } from '../../utils/db.server';
+const db = require('../../utils/db.server');
 
 exports.hasAuthValidFields = (req, res, next) => {
     let errors = [];
@@ -29,7 +30,7 @@ exports.isPasswordAndUserMatch = async (req, res, next) => {
         }
     })
     .then((user) => {
-        if(!user[0] {
+        if(!user[0]) {
             res.status(400).send({});
         } else {
             let passwordFields = user[0].password.split('$');

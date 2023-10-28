@@ -7,6 +7,7 @@ import compression from 'compression';
 import cors from 'cors';
 
 import userRouter from './router/user.router';
+import authRouter from './router/auth.router';
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+app.use('/api/v1/auth',authRouter);
 app.use('/api/v1/users',userRouter);
 
 const server = http.createServer(app);
