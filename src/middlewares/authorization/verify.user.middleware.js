@@ -1,12 +1,12 @@
 const crypto = require('crypto');
 // import { db } from '../../utils/db.server';
-const db = require('../../utils/db.server');
+const db = require('../../utils/db.server').db;
 
 exports.hasAuthValidFields = (req, res, next) => {
     let errors = [];
 
     if (req.body) {
-        if (!req.body.email) {
+        if (!req.body.emailAddress) {
             errors.push('Email adres is leeg');
         }
         if (!req.body.password) {

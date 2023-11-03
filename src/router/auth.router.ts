@@ -6,13 +6,13 @@ const AuthValidationMiddleware = require('../middlewares/authorization/auth.vali
 
 const router = express.Router();
 
-router.post('/auth', [
+router.post('/', [
     VerifyUserMiddleware.hasAuthValidFields,
     VerifyUserMiddleware.isPasswordAndUserMatch,
     AuthorizationController.login
 ]);
 
-router.post('/auth/refresh', [
+router.post('/refresh', [
     AuthValidationMiddleware.validJWTNeeded,
     AuthValidationMiddleware.verifyRefreshBodyField,
     AuthValidationMiddleware.validRefreshNeeded,
